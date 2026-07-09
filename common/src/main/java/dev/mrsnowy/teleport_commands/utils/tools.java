@@ -124,7 +124,7 @@ public class tools {
 //            Constants.LOGGER.info("{} : {} : {}", pack.packId(), pack.location(), pack.getClass());
 //        });
 
-//        player.displayClientMessage(Component.literal(.toString()), false);
+//        player.sendSystemMessage(Component.literal(.toString()), false);
 
         // the try catch stuff is so wacky, but it works fine and I don't need to check everything
         try {

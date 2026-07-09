@@ -6,9 +6,9 @@
     "description": "${description}",
     "authors": [${mod_authors_fabric}],
     "contact": {
-        "homepage": "https://mrsnowy.dev/",
-        "sources": "https://github.com/MrSn0wy/TeleportCommands",
-        "issues": "https://github.com/MrSn0wy/TeleportCommands/issues"
+        "homepage": "https://modrinth.com/mod/teleport-commands_interim",
+        "sources": "https://github.com/ZCT-Studio/TeleportCommands_Interim",
+        "issues": "https://github.com/ZCT-Studio/TeleportCommands_Interim/issues"
     },
     "license": "${license}",
     "icon": "${mod_id}.png",
@@ -24,7 +24,7 @@
     "custom": {
         "modmenu": {
             "links": {
-                "modmenu.modrinth": "https://modrinth.com/mod/teleport-commands",
+                "modmenu.modrinth": "https://modrinth.com/mod/teleport-commands_interim",
                 "modmenu.kofi": "https://ko-fi.com/mr_snowy"
             }
         }
