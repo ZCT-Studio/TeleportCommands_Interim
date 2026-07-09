@@ -16,6 +16,8 @@ import net.minecraft.network.chat.HoverEvent;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.permissions.Permission;
+import net.minecraft.server.permissions.PermissionLevel;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
@@ -32,7 +34,7 @@ public class warp {
         commandDispatcher.register(Commands.literal("setwarp")
                 .requires(source ->
                         source.getPlayer() != null &&
-                                source.hasPermission(4)
+                                source.permissions().hasPermission(new Permission.HasCommandLevel(PermissionLevel.OWNERS))
                 )
                 .then(argument("name", StringArgumentType.string())
                         .executes(context -> {
@@ -72,7 +74,7 @@ public class warp {
         commandDispatcher.register(Commands.literal("delwarp")
                 .requires(source ->
                         source.getPlayer() != null &&
-                                source.hasPermission(4)
+                                source.permissions().hasPermission(new Permission.HasCommandLevel(PermissionLevel.OWNERS))
                 )
                 .then(argument("name", StringArgumentType.string()).suggests(new WarpSuggestionProvider())
                         .executes(context -> {
@@ -93,7 +95,7 @@ public class warp {
         commandDispatcher.register(Commands.literal("renamewarp")
                 .requires(source ->
                         source.getPlayer() != null &&
-                                source.hasPermission(4)
+                                source.permissions().hasPermission(new Permission.HasCommandLevel(PermissionLevel.OWNERS))
                 )
                 .then(argument("name", StringArgumentType.string()).suggests(new WarpSuggestionProvider())
                         .then(argument("newName", StringArgumentType.string())
@@ -136,7 +138,7 @@ public class warp {
         warpName = warpName.toLowerCase();
 
         BlockPos blockPos = new BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ());
-        String worldString = player.level().dimension().location().toString();
+        String worldString = player.level().dimension().identifier().toString();
 
         // Create the NamedLocation
         NamedLocation warp = new NamedLocation(warpName, blockPos, worldString);
@@ -265,7 +267,7 @@ public class warp {
             String coords = String.format("[X%d Y%d Z%d]", currentWarp.getX(), currentWarp.getY(), currentWarp.getZ());
             String dimension = String.format(" [%s]", currentWarp.getWorldString());
 
-            boolean canModify = player.hasPermissions(4);
+            boolean canModify = player.permissions().hasPermission(new Permission.HasCommandLevel(PermissionLevel.OWNERS));
 
             // linebreak
             message.append("\n");

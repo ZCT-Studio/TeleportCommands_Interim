@@ -14,6 +14,8 @@ import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.permissions.Permission;
+import net.minecraft.server.permissions.PermissionLevel;
 
 import java.util.Arrays;
 
@@ -55,7 +57,7 @@ public class main {
             .then(Commands.literal("disable")
                 .then(Commands.argument("command", StringArgumentType.word())
                     .suggests(enabled_commands_suggester)
-                    .requires(source -> source.hasPermission(4)) // Require OP
+                    .requires(source -> source.permissions().hasPermission(new Permission.HasCommandLevel(PermissionLevel.OWNERS))) // Require OP
                     .requires(source -> source.getPlayer() != null)
                     .executes(context -> {
                         final ServerPlayer player = context.getSource().getPlayerOrException();
@@ -81,7 +83,7 @@ public class main {
             .then(Commands.literal("enable")
                 .then(Commands.argument("command", StringArgumentType.word())
                     .suggests(disabled_commands_suggester)
-                    .requires(source -> source.hasPermission(4)) // Require OP
+                    .requires(source -> source.permissions().hasPermission(new Permission.HasCommandLevel(PermissionLevel.OWNERS))) // Require OP
                     .requires(source -> source.getPlayer() != null)
                     .executes(context -> {
                         final ServerPlayer player = context.getSource().getPlayerOrException();
@@ -106,7 +108,7 @@ public class main {
                 ))
             // Todo! Is this still needed?
             .then(Commands.literal("reload")
-                .requires(source -> source.hasPermission(4)) // Require OP
+                .requires(source -> source.permissions().hasPermission(new Permission.HasCommandLevel(PermissionLevel.OWNERS))) // Require OP
                 .executes(context -> {
                     TeleportCommands.registerCommands(context.getSource().dispatcher());
                     return 0;
