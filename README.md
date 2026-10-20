@@ -1,4 +1,4 @@
-# Teleport Commands - Interim <img alt="Teleport Commands Logo" src="https://raw.githubusercontent.com/ZCT-Studio/TeleportCommands_Interim/main/common/src/main/resources/teleport_commands.png" width="30"/>
+# Teleport Commands - Interim <img alt="Teleport Commands Logo" src="https://raw.githubusercontent.com/ZCT-Studio/TeleportCommands_Interim/latest/common/src/main/resources/teleport_commands.png" width="30"/>
 
 This mod is an extra version adapted from TeleportCommands
 

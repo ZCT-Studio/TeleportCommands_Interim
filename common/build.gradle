@@ -20,10 +20,12 @@ neoForge {
         neoFormVersion = neo_form_version
         disableRecompilation = true
     }
-//    parchment {
-//        minecraftVersion = parchment_minecraft
-//        mappingsVersion = parchment_version
-//    }
+}
+
+configurations.configureEach {
+    resolutionStrategy {
+        force 'org.jspecify:jspecify:1.0.0'
+    }
 }
 
 dependencies {
